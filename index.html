@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WB Hotshot & Transport LLC</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <header>
+        <nav id="navbar">
+            <div class="container">
+                <a href="#home" class="logo">WB Hotshot & Transport</a>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#quote">Request a Quote</a></li>
+                    <li><a href="#fleet">Our Fleet</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="overlay">
+            <div class="hero-text">
+                <h2>Driven to Deliver</h2>
+                <p>Hotshot & Long-Haul Trucking Across the Nation</p>
+                <a href="#contact" class="btn">Get a Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section services-section">
+        <div class="container">
+            <h3>Our Services</h3>
+            <div class="services-grid">
+                <div class="card">Hotshot Trucking</div>
+                <div class="card">Flatbed Transport</div>
+                <div class="card">Long-Distance Hauling</div>
+                <div class="card">24/7 Dispatch Support</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials-section">
+      <div class="container">
+          <h3>What Our Clients Say</h3>
+          <div class="testimonial-slider">
+              <!-- Testimonial 1 -->
+              <div class="testimonial active">
+                  <p>"WB Hotshot delivered our load safely and faster than expected. Highly professional!"</p>
+                  <h4>– James M., Farm Equipment Co.</h4>
+              </div>
+              <!-- Testimonial 2 -->
+              <div class="testimonial">
+                  <p>"Great communication and top-notch service. We'll be using them again."</p>
+                  <h4>– Lisa R., Logistics Manager</h4>
+              </div>
+              <!-- Testimonial 3 -->
+              <div class="testimonial">
+                  <p>"They handled our long-haul job perfectly. Reliable and responsive!"</p>
+                  <h4>– Carlos T., Construction Firm</h4>
+              </div>
+          </div>
+  
+          <!-- Slider controls -->
+          <div class="slider-controls">
+              <button id="prev" class="slider-button" aria-label="Previous Testimonial">&#10094;</button>
+              <button id="next" class="slider-button" aria-label="Next Testimonial">&#10095;</button>
+          </div>
+      </div>
+  </section>
+  
+    
+    <!-- Fleet Section -->
+    <section id="fleet" class="section fleet-section">
+        <div class="container">
+            <h3>Our Fleet</h3>
+            <div class="gallery-grid">
+                <img src="https://tempuslogix.com/wp-content/uploads/2022/11/All-About-HotShot-Trucking.jpg" alt="Truck 1" />
+                <img src="https://www.gatormade.com/wp-content/uploads/2019/01/image3.jpeg" alt="Truck 2" />
+                <img src="https://logitydispatch.com/wp-content/uploads/2024/08/hotshot-truck.webp" alt="Truck 3" />
+                <img src="https://resolute-logistics.com/uploads/posts/August2023/hotshot-trucking.jpg" alt="Trailer 1" />
+            </div>
+        </div>
+    </section>
+
+<!-- Stats Section -->
+<section id="stats" class="section stats-section">
+    <div class="container">
+        <h3>Our Impact</h3>
+        <div class="stats-grid">
+            <div class="stat">
+                <h4><span class="count" data-target="2500">0</span>+</h4>
+                <p>Loads Delivered</p>
+            </div>
+            <div class="stat">
+                <h4><span class="count" data-target="1000000">0</span>+</h4>
+                <p>Miles Hauled</p>
+            </div>
+            <div class="stat">
+                <h4><span class="count" data-target="5">0</span></h4>
+                <p>Years in Business</p>
+            </div>
+            <div class="stat">
+                <h4><span class="count" data-target="48">0</span></h4>
+                <p>States Covered</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Function to animate the counter
+    function animateCounters() {
+        const counters = document.querySelectorAll('.count');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target'); // Get the target number
+            const current = +counter.innerText; // Get the current number
+            const increment = target / 100; // Increment steps
+
+            let count = current;
+            const interval = setInterval(() => {
+                count += increment;
+                if (count >= target) {
+                    count = target; // Ensure it doesn't exceed the target
+                    clearInterval(interval); // Stop the interval
+                }
+                counter.innerText = Math.floor(count); // Update the counter text
+            }, 20); // Update every 20ms for a smooth animation
+        });
+    }
+
+    // Check if the stats section is in the viewport
+    function checkStatsInView() {
+        const statsSection = document.getElementById('stats');
+        const statsPosition = statsSection.getBoundingClientRect();
+        if (statsPosition.top < window.innerHeight && statsPosition.bottom >= 0) {
+            animateCounters(); // Animate counters if the section is in view
+            window.removeEventListener('scroll', checkStatsInView); // Remove the event listener once animation starts
+        }
+    }
+
+    // Listen for scroll events
+    window.addEventListener('scroll', checkStatsInView);
+
+    // Run on page load in case stats are already in view (e.g., on initial load or refresh)
+    checkStatsInView();
+</script>
+
+
+    <!-- Contact Form Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <h3>Contact Us</h3>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required placeholder="Enter your name">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" required placeholder="Enter your message"></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+            <div id="formResponse" class="form-response"></div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section id="contact-info" class="section contact-info-section">
+        <div class="container">
+            <h3>Contact Info</h3>
+            <p>Email: <a href="mailto:info@wbtransport.com">info@wbtransport.com</a></p>
+            <p>Phone: <a href="tel:1234567890">(123) 456-7890</a></p>
+        </div>
+    </section>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top">
+        ↑
+    </button>
+
+    <!-- Footer Section -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h4>WB Hotshot & Transport LLC</h4>
+                    <p><strong>Address:</strong> 1234 Transport St, City, State, 12345</p>
+                    <p><strong>Phone:</strong> (123) 456-7890</p>
+                    <p><strong>Email:</strong> contact@wbhotshot.com</p>
+                </div>
+                <div class="footer-social">
+                    <h4>Follow Us</h4>
+                    <a href="#" class="social-link">Facebook</a>
+                    <a href="#" class="social-link">Instagram</a>
+                    <a href="#" class="social-link">LinkedIn</a>
+                </div>
+                <div class="footer-nav">
+                    <h4>Quick Links</h4>
+                    <a href="#home">Home</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 WB Hotshot & Transport LLC | All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
